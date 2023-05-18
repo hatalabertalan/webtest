@@ -1,0 +1,1 @@
+#ha lesz validáció akkor outline
