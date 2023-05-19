@@ -8,6 +8,5 @@ Built using **Java 17**.
 
 Run the tests using the following Maven command:
 
-Push?
 
 <code>mvn test</code>
