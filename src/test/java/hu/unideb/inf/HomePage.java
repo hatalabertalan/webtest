@@ -1,6 +1,7 @@
 package hu.unideb.inf;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,13 +21,11 @@ public class HomePage {
     private WebElement welcomeText;
     @FindBy(css = "div.deal-action-box > div.price-box > span.price__num")
     private WebElement priceText;
+    @FindBy(css = "div.subscriberesponse")
+    private WebElement subscriptionError;
 
     private static final Map<String, By> textFields = Map.of(
-       "Username", By.id("user-name"),
-       "Password", By.id("password"),
-       "First Name", By.id("first-name"),
-       "Last Name", By.id("last-name"),
-       "Zip Code", By.id("postal-code")
+       "Subscription", By.id("exampleInputEmail1")
     );
 
     private static final Map<String, By> navigationButtons = Map.of(
@@ -36,14 +35,24 @@ public class HomePage {
         "Flights", By.cssSelector(".active_flights"),
         "Tours", By.cssSelector(".active_tours"),
         "Transfers", By.cssSelector(".active_cars"),
-        "Offers",By.cssSelector(".active_offers")
+        "Offers",By.cssSelector(".active_offers"),
+        "Account",By.id("ACCOUNT"),
+        "Got it",By.id("cookie_stop"),
+        "Subscribe",By.id("email_subscribe")
+    );
+
+    private static final Map<String, By> signupButtons = Map.of(
+        "Customer", By.linkText("Customer Signup"),
+        "Agent", By.linkText("Agents Signup"),
+        "Supplier", By.linkText("Supplier Signup")
     );
 
     private static final Map<String, By> languages = Map.of(
         "Turkish", By.linkText("Turkish"),
         "Russian", By.linkText("Russian"),
         "Philippine", By.linkText("Philippine"),
-        "Korean" , By.linkText("Korean")
+        "Korean" , By.linkText("Korean"),
+        "English" , By.linkText("English")
     );
 
     private static final Map<String, By> currencies = Map.of(
@@ -65,8 +74,15 @@ public class HomePage {
     public void closePage() {
         driver.quit();
     }
+    public void scrollToBottom() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
+    }
     public void fillOutField(String field, String text) {
         driver.findElement(textFields.get(field)).sendKeys(text);
+    }
+    public boolean buttonExists(String button) {
+        return driver.findElements(navigationButtons.get(button)).size() > 0;
     }
     public void clickButton(String button) {
         driver.findElement(navigationButtons.get(button)).click();
@@ -77,7 +93,12 @@ public class HomePage {
     public void selectCurrency(String currencyText) {
         driver.findElement(currencies.get(currencyText)).click();
     }
-    public String getErrorMessage() {return errorMessage.getText();}
+    public void clickSignupButton(String accountType) {
+        driver.findElement(signupButtons.get(accountType)).click();
+    }
+    public String getSubscriptionError() {
+        return subscriptionError.getText();
+    };
     public String getWelcomeText() {return welcomeText.getText();}
     public String getPriceText() {return priceText.getText();}
 }

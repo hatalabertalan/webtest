@@ -15,6 +15,8 @@ public abstract class AbstractStepDefs {
     protected static MenuPage menuPage;
     protected static OffersPage offersPage;
 
+    protected static SignupPage signupPage;
+
     static {
 
         WebDriverManager.chromedriver().setup();
@@ -25,5 +27,6 @@ public abstract class AbstractStepDefs {
         homePage = new HomePage(driver);
         menuPage = new MenuPage(driver);
         offersPage = new OffersPage(driver);
+        signupPage = new SignupPage(driver);
     }
 }

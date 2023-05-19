@@ -5,10 +5,10 @@ Feature: PHP travels menubar checker
 
   Scenario Outline: Change menubar element
     When the '<menuElement>' button is clicked
-    Then the '<menuText>' menu text is shown
+    Then the '<titleText>' title text is shown
     Examples:
-      | menuElement | menuText                     |
-      | Hotels      | SEARCH FOR BEST HOTELS       |
-      | Flights     | SEARCH FOR BEST FLIGHTS      |
-      | Tours       | FIND THE BEST TOURS PACKAGES |
-      | Transfers   | BOOK YOUR TRANSFER TODAY     |
+      | menuElement | titleText                     |
+      | Hotels      | Search Hotels - PHPTRAVELS    |
+      | Flights     | Search flights - PHPTRAVELS   |
+      | Tours       | Search Tours - PHPTRAVELS     |
+      | Transfers   | Search Transfers - PHPTRAVELS |

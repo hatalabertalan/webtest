@@ -13,4 +13,5 @@ Feature: PHP travels language switcher
         | Russian    | Давайте забронируем вашу следующую поездку!       |
         | Philippine | I-book natin ang iyong susunod na biyahe!         |
         | Korean     | 다음 여행을 예약합시다!                                     |
+        | English    | Let’s book your next trip!                        |
 

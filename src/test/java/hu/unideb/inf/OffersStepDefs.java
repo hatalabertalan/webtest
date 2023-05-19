@@ -3,7 +3,7 @@ package hu.unideb.inf;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OffersStepDefs extends AbstractStepDefs {
 
@@ -12,8 +12,8 @@ public class OffersStepDefs extends AbstractStepDefs {
         offersPage.selectOffer(offerName);
     }
 
-    @Then("the {string} offer text is shown")
-    public void theOfferTextIsShown(String offerText) {
-        assertEquals(offerText, offersPage.getOfferText());
+    @Then("the {string} offer image is shown")
+    public void theOfferImageIsShown(String offerImage) {
+        assertTrue(offersPage.imageExists(offerImage));
     }
 }
